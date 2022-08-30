@@ -9,7 +9,7 @@ void func_push(stack_t **stack, unsigned int line_number)
 
 	if (value_cp == 0)
 	{
-		printf("L%d: usage: push integer\n", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
