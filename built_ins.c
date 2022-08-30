@@ -1,10 +1,17 @@
 #include "monty.h"
 
 
-void func_push(stack_t **stack)
+void func_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new = NULL;
 	stack_t *current = NULL;
+	int value_cp = value;
+
+	if (value_cp == 0)
+	{
+		printf("L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
 	if (stack == NULL)
 		exit(EXIT_FAILURE);
@@ -18,7 +25,7 @@ void func_push(stack_t **stack)
 	}
 
 	current = *stack;
-	new->n = 5;
+	new->n = value_cp;
 	new->next = NULL;
 
 	if (*stack == NULL)
@@ -34,7 +41,7 @@ void func_push(stack_t **stack)
 }
 
 
-void func_pall(stack_t **stack)
+void func_pall(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *current = NULL;
 
@@ -46,7 +53,7 @@ void func_pall(stack_t **stack)
 	current = *stack;
 	while (current != NULL)
 	{
-		printf("%d\n", (*(stack))->n);
+		printf("%d\n", current->n);
 		current  = current->prev;
 	}
 }

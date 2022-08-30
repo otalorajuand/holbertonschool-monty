@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+extern int value;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -32,11 +34,11 @@ typedef struct stack_s
 typedef struct instruction_s
 {
         char *opcode;
-        void (*f)(stack_t **stack);
+        void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void func_push(stack_t **stack);
-void func_pall(stack_t **stack);
-void (*get_built_in(char *s))(stack_t **stack);
+void func_push(stack_t **stack, unsigned int line_number);
+void func_pall(stack_t **stack, unsigned int line_number);
+void (*get_built_in(char *s))(stack_t **stack, unsigned int line_number);
 
 #endif /* _MONTY_H_ */

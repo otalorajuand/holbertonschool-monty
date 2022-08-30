@@ -1,11 +1,14 @@
 #include "monty.h"
 
+int value = 16;
+
 int main(int argc, char *argv[])
 {
 	FILE *file;
 	char str[50], *token;
-	void (*func)(stack_t **stack);
+	void (*func)(stack_t **stack, unsigned int line_number);
 	stack_t *stack = NULL;
+	unsigned int line_number = 1;
 
 	if (argc != 2)
 	{
@@ -27,12 +30,16 @@ int main(int argc, char *argv[])
 		func = get_built_in(token);
 		if (func == NULL)
 		{
-			printf("L<line_number>: unknown instruction %s\n", token);
+			printf("L%d: unknown instruction %s\n", line_number, token);
 			exit(EXIT_FAILURE);
 		}
-		func(&stack);
-	}
 
+		token = strtok(NULL, " ");
+		if (token != NULL)
+			value = atoi(token);
+		func(&stack, line_number);
+		line_number++;
+	}
 	fclose(file);
 	return (0);
 }
