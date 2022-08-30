@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-extern int value;
+extern char* push_value;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -40,5 +40,8 @@ typedef struct instruction_s
 void func_push(stack_t **stack, unsigned int line_number);
 void func_pall(stack_t **stack, unsigned int line_number);
 void (*get_built_in(char *s))(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t **stack);
+int isNumeric(const char *str);
+
 
 #endif /* _MONTY_H_ */

@@ -5,9 +5,11 @@ void func_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new = NULL;
 	stack_t *current = NULL;
-	int value_cp = value;
+	int push_value_int;
 
-	if (value_cp == 0)
+	push_value_int = atoi(push_value);
+
+	if (isNumeric(push_value) == 0 || push_value == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
@@ -25,7 +27,7 @@ void func_push(stack_t **stack, unsigned int line_number)
 	}
 
 	current = *stack;
-	new->n = value_cp;
+	new->n = push_value_int;
 	new->next = NULL;
 
 	if (*stack == NULL)
@@ -58,3 +60,27 @@ void func_pall(stack_t **stack, __attribute__((unused)) unsigned int line_number
 	}
 }
 
+void free_stack(stack_t **stack)
+{
+	stack_t *current = NULL;
+
+	while (*stack != NULL)
+	{
+		current = (*(stack))->prev;
+		free(*stack);
+		*stack = current;
+	}
+}
+
+int isNumeric(const char *str)
+{
+	while (*str != '\0')
+	{
+		if ((*str < '0' || *str > '9') && *str != '\n' &&
+			*str != '-')
+			return (0);
+		str++;
+	}
+
+	return (1);
+}

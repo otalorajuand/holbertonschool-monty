@@ -1,11 +1,11 @@
 #include "monty.h"
 
-int value = 16;
+char *push_value = NULL;
 
 int main(int argc, char *argv[])
 {
 	FILE *file;
-	char str[50], *token;
+	char str[50], *token = NULL;
 	void (*func)(stack_t **stack, unsigned int line_number);
 	stack_t *stack = NULL;
 	unsigned int line_number = 1;
@@ -26,6 +26,11 @@ int main(int argc, char *argv[])
 
 	while (fgets(str, 50, file) != NULL)
 	{
+		if (str[0] == '\n')
+		{
+			line_number++;
+			continue;
+		}
 		token = strtok(str, " ");
 		func = get_built_in(token);
 		if (func == NULL)
@@ -34,12 +39,11 @@ int main(int argc, char *argv[])
 			exit(EXIT_FAILURE);
 		}
 
-		token = strtok(NULL, " ");
-		if (token != NULL)
-			value = atoi(token);
+		push_value = strtok(NULL, " ");
 		func(&stack, line_number);
 		line_number++;
 	}
 	fclose(file);
+	free_stack(&stack);
 	return (0);
 }
