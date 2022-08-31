@@ -48,6 +48,7 @@ do { \
 
 void func_push(stack_t **stack, unsigned int line_number);
 void func_pall(stack_t **stack, unsigned int line_number);
+void func_nop(stack_t **stack, unsigned int line_number);
 void func_swap(stack_t **stack, unsigned int line_number);
 void func_pint(stack_t **stack, unsigned int line_number);
 void func_pop(stack_t **stack, unsigned int line_number);

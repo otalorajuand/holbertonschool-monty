@@ -16,6 +16,7 @@ void (*get_built_in(char *s))(stack_t **stack, unsigned int line_number)
 		{"pint", func_pint},
 		{"pop", func_pop},
 		{"swap", func_swap},
+		{"nop", func_nop},
 		{NULL, NULL},
 	};
 
