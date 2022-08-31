@@ -74,6 +74,24 @@ void func_pall(stack_t **stack,
 }
 
 /**
+ * func_pint - Prints the top element of the stack
+ * @stack: The stack
+ * @line_number: The line number of the monty file
+* Return: Nothing.
+ */
+
+void func_pint(stack_t **stack, unsigned int line_number)
+{
+	if (stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%d\n", (*(stack))->n);
+}
+
+/**
  * free_stack - Delets the stack
  * @stack: The stack
 * Return: Nothing.
