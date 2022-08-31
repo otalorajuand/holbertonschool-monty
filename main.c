@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 		size_len = strlen(str);
 		str[size_len - 1] = '\0';
 		token = strtok(str, " ");
-		if (token == NULL)
+		if (token == NULL || token[0] == '#')
 		{
 			line_number++;
 			continue;
