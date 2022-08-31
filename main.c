@@ -2,6 +2,13 @@
 
 char *push_value = NULL;
 
+/**
+ * main - Interpreter for Monty ByteCodes files.
+ * @argc: arguments counter
+ * @argv: arguments vector
+* Return: 0 if success
+ */
+
 int main(int argc, char *argv[])
 {
 	FILE *file;
@@ -43,5 +50,5 @@ int main(int argc, char *argv[])
 	}
 	fclose(file);
 	free_stack(&stack);
-	return (0);
+	return (EXIT_SUCCESS);
 }

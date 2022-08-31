@@ -2,10 +2,10 @@
 
 /**
  * get_built_in - Selects the correct function to perform
- * the format asked by the user.
- * @s: The format passed as argument.
+ * the opcode in the monty file.
+ * @s: The opcode passed as argument.
  * Return: A pointer to the function corresponding
- * to the format given as a parameter.
+ * to the opcode given as a parameter.
  */
 
 void (*get_built_in(char *s))(stack_t **stack, unsigned int line_number)

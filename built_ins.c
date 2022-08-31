@@ -1,5 +1,11 @@
 #include "monty.h"
 
+/**
+ * func_push - Pushes and node to the stack
+ * @stack: the stack
+ * @line_number: The line number of the monty file
+* Return: Nothing.
+ */
 
 void func_push(stack_t **stack, unsigned int line_number)
 {
@@ -42,8 +48,15 @@ void func_push(stack_t **stack, unsigned int line_number)
 	*stack = new;
 }
 
+/**
+ * func_pall - Prints all the elements of the stack
+ * @stack: The stack
+ * @line_number: The line number of the monty file
+* Return: Nothing.
+ */
 
-void func_pall(stack_t **stack, __attribute__((unused)) unsigned int line_number)
+void func_pall(stack_t **stack,
+		__attribute__((unused)) unsigned int line_number)
 {
 	stack_t *current = NULL;
 
@@ -60,6 +73,12 @@ void func_pall(stack_t **stack, __attribute__((unused)) unsigned int line_number
 	}
 }
 
+/**
+ * free_stack - Delets the stack
+ * @stack: The stack
+* Return: Nothing.
+ */
+
 void free_stack(stack_t **stack)
 {
 	stack_t *current = NULL;
@@ -71,6 +90,12 @@ void free_stack(stack_t **stack)
 		*stack = current;
 	}
 }
+
+/**
+ * isNumeric - Checks if a string have only numeric digits
+ * @str: The string
+* Return: 1 if true, 0 if false
+ */
 
 int isNumeric(const char *str)
 {
