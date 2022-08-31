@@ -14,6 +14,7 @@ void (*get_built_in(char *s))(stack_t **stack, unsigned int line_number)
 		{"push", func_push},
 		{"pall", func_pall},
 		{"pint", func_pint},
+		{"pop", func_pop},
 		{NULL, NULL},
 	};
 
