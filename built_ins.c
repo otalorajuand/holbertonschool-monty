@@ -7,13 +7,13 @@ void func_push(stack_t **stack, unsigned int line_number)
 	stack_t *current = NULL;
 	int push_value_int;
 
-	push_value_int = atoi(push_value);
-
-	if (isNumeric(push_value) == 0 || push_value == NULL)
+	if (push_value == NULL || isNumeric(push_value) == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+
+	push_value_int = atoi(push_value);
 
 	if (stack == NULL)
 		exit(EXIT_FAILURE);

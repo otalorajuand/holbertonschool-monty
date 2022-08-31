@@ -37,6 +37,15 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+#define CHECK_ARG(ARGC) \
+do { \
+	if (ARGC != 2) \
+	{ \
+		fprintf(stderr, "USAGE: monty file\n"); \
+		exit(EXIT_FAILURE); \
+	} \
+} while (0)
+
 void func_push(stack_t **stack, unsigned int line_number);
 void func_pall(stack_t **stack, unsigned int line_number);
 void (*get_built_in(char *s))(stack_t **stack, unsigned int line_number);

@@ -5,17 +5,13 @@ char *push_value = NULL;
 int main(int argc, char *argv[])
 {
 	FILE *file;
-	char str[50], *token = NULL;
+	char str[150], *token = NULL;
 	void (*func)(stack_t **stack, unsigned int line_number);
 	stack_t *stack = NULL;
 	unsigned int line_number = 1;
+	int size_len = 0, line_size = 150;
 
-	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
-
+	CHECK_ARG(argc);
 	file = fopen(argv[1], "r");
 
 	if (file == NULL)
@@ -24,14 +20,16 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while (fgets(str, 50, file) != NULL)
+	while (fgets(str, line_size, file) != NULL)
 	{
-		if (str[0] == '\n')
+		size_len = strlen(str);
+		str[size_len - 1] = '\0';
+		token = strtok(str, " ");
+		if (token == NULL)
 		{
 			line_number++;
 			continue;
 		}
-		token = strtok(str, " ");
 		func = get_built_in(token);
 		if (func == NULL)
 		{
