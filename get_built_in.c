@@ -18,6 +18,7 @@ void (*get_built_in(char *s))(stack_t **stack, unsigned int line_number)
 		{"swap", func_swap},
 		{"add", func_add},
 		{"nop", func_nop},
+		{"sub", func_sub},
 		{NULL, NULL},
 	};
 

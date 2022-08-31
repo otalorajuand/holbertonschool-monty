@@ -51,6 +51,7 @@ void func_pall(stack_t **stack, unsigned int line_number);
 void func_nop(stack_t **stack, unsigned int line_number);
 void func_swap(stack_t **stack, unsigned int line_number);
 void func_add(stack_t **stack, unsigned int line_number);
+void func_sub(stack_t **stack, unsigned int line_number);
 void func_pint(stack_t **stack, unsigned int line_number);
 void func_pop(stack_t **stack, unsigned int line_number);
 void (*get_built_in(char *s))(stack_t **stack, unsigned int line_number);
