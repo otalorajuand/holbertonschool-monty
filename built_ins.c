@@ -92,38 +92,51 @@ void func_pint(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * free_stack - Delets the stack
+ * func_pop - Removes the top element of the stack.
  * @stack: The stack
+ * @line_number: The line number of the monty file
 * Return: Nothing.
  */
 
-void free_stack(stack_t **stack)
+void func_pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current = NULL;
+	stack_t *tmp = NULL;
 
-	while (*stack != NULL)
+	if (*stack == NULL)
 	{
-		current = (*(stack))->prev;
-		free(*stack);
-		*stack = current;
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
 	}
+
+	tmp = *stack;
+	*stack = (*(stack))->prev;
+	free(tmp);
 }
 
 /**
- * isNumeric - Checks if a string have only numeric digits
- * @str: The string
-* Return: 1 if true, 0 if false
+ * func_swap - Swaps the two top element of the stack.
+ * @stack: The stack
+ * @line_number: The line number of the monty file
+* Return: Nothing.
  */
 
-int isNumeric(const char *str)
+void func_swap(stack_t **stack, unsigned int line_number)
 {
-	while (*str != '\0')
+	stack_t *tmp = NULL;
+	int len = 0;
+
+	len = stack_len(stack);
+	if (len < 2)
 	{
-		if ((*str < '0' || *str > '9') && *str != '\n' &&
-			*str != '-')
-			return (0);
-		str++;
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
 	}
 
-	return (1);
+	tmp = *stack;
+	*stack = (*(stack))->prev;
+	tmp->next = *stack;
+	tmp->prev = (*(stack))->prev;
+	(*(stack))->prev = tmp;
+	(*(stack))->next = NULL;
 }
+
