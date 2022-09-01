@@ -98,7 +98,16 @@ void func_pstr(stack_t **stack,
 void func_rotl(stack_t **stack,
 		__attribute__((unused)) unsigned int line_number)
 {
+
+	int len = 0;
 	stack_t *tmp_top = NULL, *current = NULL, *top_prev = NULL;
+
+	len = stack_len(stack);
+	if (len <= 1)
+	{
+		return;
+	}
+
 
 	tmp_top = *stack;
 	current = *stack;
