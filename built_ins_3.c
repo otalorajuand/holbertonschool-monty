@@ -87,3 +87,29 @@ void func_pstr(stack_t **stack,
 	printf("\n");
 }
 
+
+/**
+ * func_rotl - rotates the stack to the top.
+ * @stack: The stack
+ * @line_number: the line number of the file
+* Return: Nothing
+ */
+
+void func_rotl(stack_t **stack,
+		__attribute__((unused)) unsigned int line_number)
+{
+	stack_t *tmp_top = NULL, *current = NULL, *top_prev = NULL;
+
+	tmp_top = *stack;
+	current = *stack;
+	top_prev = (*(stack))->prev;
+
+	while (current->prev != NULL)
+		current = current->prev;
+
+	tmp_top->next = current;
+	current->prev = tmp_top;
+	tmp_top->prev = NULL;
+	*stack = top_prev;
+	(*(stack))->next = NULL;
+}
