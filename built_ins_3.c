@@ -70,6 +70,11 @@ void func_pstr(stack_t **stack,
 	int c;
 	stack_t *tmp = NULL;
 
+	if (*stack == NULL)
+	{
+		printf("\n");
+		return;
+	}
 	tmp = (*(stack));
 	c = tmp->n;
 	while (c != 0 || tmp == NULL || c < 0 || c > 127)
