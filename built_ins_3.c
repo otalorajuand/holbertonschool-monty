@@ -42,7 +42,7 @@ void func_pchar(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL)
 	{
-		printf("L%d: can't pchar, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -50,7 +50,7 @@ void func_pchar(stack_t **stack, unsigned int line_number)
 
 	if (c < 0 || c > 127)
 	{
-		printf("L%d: can't pchar, value out of range\n", line_number);
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
