@@ -38,17 +38,19 @@ void func_mod(stack_t **stack, unsigned int line_number)
 
 void func_pchar(stack_t **stack, unsigned int line_number)
 {
-	int c = (*(stack))->n;
+	int c;
 
 	if (*stack == NULL)
 	{
-		printf("L%d: can't pchar, stack empty", line_number);
+		printf("L%d: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
+	c = (*(stack))->n;
+
 	if (c < 0 || c > 127)
 	{
-		printf("L%d: can't pchar, value out of range", line_number);
+		printf("L%d: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
