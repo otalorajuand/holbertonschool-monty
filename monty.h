@@ -57,6 +57,7 @@ void func_mod(stack_t **stack, unsigned int line_number);
 void func_pchar(stack_t **stack, unsigned int line_number);
 void func_mul(stack_t **stack, unsigned int line_number);
 void func_pint(stack_t **stack, unsigned int line_number);
+void func_pstr(stack_t **stack, unsigned int line_number);
 void func_pop(stack_t **stack, unsigned int line_number);
 void (*get_built_in(char *s))(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t **stack);

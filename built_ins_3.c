@@ -57,3 +57,27 @@ void func_pchar(stack_t **stack, unsigned int line_number)
 	printf("%c\n", c);
 }
 
+/**
+ * func_pstr - prints the string starting at the top of the stack.
+ * @stack: The stack
+ * @line_number: the line number of the file
+* Return: Nothing
+ */
+
+void func_pstr(stack_t **stack,
+		__attribute__((unused)) unsigned int line_number)
+{
+	int c;
+	stack_t *tmp = NULL;
+
+	tmp = (*(stack));
+	c = tmp->n;
+	while (c != 0 || tmp == NULL || c < 0 || c > 127)
+	{
+		printf("%c", c);
+		tmp = tmp->prev;
+		c = tmp->n;
+	}
+	printf("\n");
+}
+
