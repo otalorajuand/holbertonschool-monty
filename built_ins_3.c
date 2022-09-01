@@ -77,11 +77,12 @@ void func_pstr(stack_t **stack,
 	}
 	tmp = (*(stack));
 	c = tmp->n;
-	while (c != 0 || tmp == NULL || c < 0 || c > 127)
+	while (tmp != NULL && c > 0 && c < 127)
 	{
 		printf("%c", c);
 		tmp = tmp->prev;
-		c = tmp->n;
+		if (tmp != NULL)
+			c = tmp->n;
 	}
 	printf("\n");
 }
