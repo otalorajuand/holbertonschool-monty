@@ -25,6 +25,7 @@ void (*get_built_in(char *s))(stack_t **stack, unsigned int line_number)
 		{"pchar", func_pchar},
 		{"pstr", func_pstr},
 		{"rotl", func_rotl},
+		{"rotr", func_rotr},
 		{NULL, NULL},
 	};
 

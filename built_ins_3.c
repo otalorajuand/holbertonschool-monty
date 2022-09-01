@@ -122,3 +122,34 @@ void func_rotl(stack_t **stack,
 	*stack = top_prev;
 	(*(stack))->next = NULL;
 }
+
+/**
+ * func_rotr - rotates the stack to the bottom.
+ * @stack: The stack
+ * @line_number: the line number of the file
+* Return: Nothing
+ */
+
+void func_rotr(stack_t **stack,
+		__attribute__((unused)) unsigned int line_number)
+{
+
+	int len = 0;
+	stack_t *first_node = NULL;
+
+	len = stack_len(stack);
+	if (len <= 1)
+	{
+		return;
+	}
+
+	first_node = *stack;
+
+	while (first_node->prev != NULL)
+		first_node = first_node->prev;
+
+	first_node->next->prev = NULL;
+	first_node->next = NULL;
+	first_node->prev = *stack;
+	*stack = first_node;
+}

@@ -53,6 +53,7 @@ void func_swap(stack_t **stack, unsigned int line_number);
 void func_add(stack_t **stack, unsigned int line_number);
 void func_sub(stack_t **stack, unsigned int line_number);
 void func_div(stack_t **stack, unsigned int line_number);
+void func_rotr(stack_t **stack, unsigned int line_number);
 void func_rotl(stack_t **stack, unsigned int line_number);
 void func_mod(stack_t **stack, unsigned int line_number);
 void func_pchar(stack_t **stack, unsigned int line_number);
