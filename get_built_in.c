@@ -22,6 +22,7 @@ void (*get_built_in(char *s))(stack_t **stack, unsigned int line_number)
 		{"div", func_div},
 		{"mul", func_mul},
 		{"mod", func_mod},
+		{"pchar", func_pchar},
 		{NULL, NULL},
 	};
 

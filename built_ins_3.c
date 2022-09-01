@@ -29,3 +29,29 @@ void func_mod(stack_t **stack, unsigned int line_number)
 	func_pop(stack, line_number);
 }
 
+/**
+ * func_pchar - Prints the char at the top of the stack.
+ * @stack: The stack
+ * @line_number: the line number of the file
+* Return: Nothing
+ */
+
+void func_pchar(stack_t **stack, unsigned int line_number)
+{
+	int c = (*(stack))->n;
+
+	if (*stack == NULL)
+	{
+		printf("L%d: can't pchar, stack empty", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	if (c < 0 || c > 127)
+	{
+		printf("L%d: can't pchar, value out of range", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%c\n", c);
+}
+
