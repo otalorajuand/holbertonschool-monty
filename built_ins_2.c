@@ -22,18 +22,6 @@ void func_add(stack_t **stack, unsigned int line_number)
 	func_pop(stack, line_number);
 }
 
-/**
- * func_nop - Does not do anything
- * @stack: the stack
- * @line_number: the number of the line
-* Return: anything
- */
-
-void func_nop(__attribute__((unused)) stack_t **stack,
-		__attribute__((unused)) unsigned int line_number)
-{
-	return;
-}
 
 /**
  * func_sub - substract the top two elements of the stack.
