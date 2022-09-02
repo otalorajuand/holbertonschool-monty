@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
 		/* Interpret line */
 		token = strtok(str, " ");
-		if (token == NULL || token[0] == '#' || strcmp(token, "nop"))
+		if (token == NULL || token[0] == '#' || strcmp(token, "nop") == 0)
 		{
 			line_number++;
 			continue;
