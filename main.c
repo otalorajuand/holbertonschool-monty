@@ -20,32 +20,30 @@ int main(int argc, char *argv[])
 
 	CHECK_ARG(argc);
 	file = fopen(argv[1], "r");
+	CHECK_FILE(file, argv);
 
-	if (file == NULL)
+	while (fgets(str, line_size, file) != NULL) /* Read line */
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
-
-	while (fgets(str, line_size, file) != NULL)
-	{
+		/* Remove last element of line (\n) */
 		size_len = strlen(str);
 		str[size_len - 1] = '\0';
+
+		/* Interpret line */
 		token = strtok(str, " ");
 		if (token == NULL || token[0] == '#')
 		{
 			line_number++;
 			continue;
 		}
-		func = get_built_in(token);
-		if (func == NULL)
-		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, token);
-			exit(EXIT_FAILURE);
-		}
-
 		push_value = strtok(NULL, " ");
+
+		/* Choose the function */
+		func = get_built_in(token);
+		CHECK_FUNC(func, line_number, token);
+
+		/* Exectute the function */
 		func(&stack, line_number);
+
 		line_number++;
 	}
 	fclose(file);

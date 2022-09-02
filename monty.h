@@ -46,6 +46,25 @@ do { \
 	} \
 } while (0)
 
+#define CHECK_FILE(FILE, ARGV) \
+do { \
+	if (file == NULL) \
+	{ \
+		fprintf(stderr, "Error: Can't open file %s\n", ARGV[1]); \
+		exit(EXIT_FAILURE); \
+	} \
+} while (0)
+
+#define CHECK_FUNC(FUNC, LINE_NUMBER, TOKEN) \
+do { \
+	if (FUNC == NULL) \
+	{ \
+		fprintf(stderr, "L%d: unknown instruction %s\n", LINE_NUMBER, TOKEN); \
+		exit(EXIT_FAILURE); \
+	} \
+} while (0)
+
+
 void func_push(stack_t **stack, unsigned int line_number);
 void func_pall(stack_t **stack, unsigned int line_number);
 void func_nop(stack_t **stack, unsigned int line_number);
