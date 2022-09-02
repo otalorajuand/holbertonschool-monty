@@ -184,4 +184,4 @@ julien@ubuntu:~/monty$
 <li>You have to use <code>malloc</code> and <code>free</code> and are not allowed to use any other function from <code>man malloc</code> (realloc, calloc, &hellip;)</li>
 </ul>
 
-</div>>
+</div>
